@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Rifa {
+model Raffle {
   id             String  @id @default(uuid())
   title          String
   email          String
@@ -17,5 +17,5 @@ model Rifa {
   prizePool      String?
   slug           String  @unique
 
-  @@map("rifas")
+  @@map("raffle")
 }

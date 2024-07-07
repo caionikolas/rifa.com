@@ -1,8 +1,10 @@
 import { PrismaClient } from "@prisma/client";
 import fastify from "fastify";
-import { z } from "zod"
+import { date, z } from "zod"
 
 import { serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-type-provider-zod";
+import { generateSlug } from "./utils/generate-slug";
+import { randomUUID } from "node:crypto";
 
 const app = fastify()
 
@@ -24,8 +26,12 @@ app
       maximumNumbers: z.number().positive().int(),
       drawDate: z.string().nullish(),
       prizePool: z.string().nullish(),
-      slug: z.string()
-    })
+    }),
+    response: {
+      201: z.object({
+        raffleId: z.string().uuid(),
+      })
+    }
   }
 }, async (request, reply) => {
   const { 
@@ -35,10 +41,25 @@ app
     maximumNumbers,
     drawDate,
     prizePool,
-    slug,
   } = request.body
 
-  const raffle = await prisma.rifa.create({
+  const uuid = randomUUID().toString()
+  const getslug = uuid.substring(uuid.length - 10)
+
+  const slug = generateSlug(getslug)
+
+  /*
+  const raffleWithSameSlug = await prisma.raffle.findUnique({
+    where: {
+      slug,
+    }
+  })
+
+  if (raffleWithSameSlug !==) {
+    throw new Error('Slug ja existe')
+  }
+ */
+  const raffle = await prisma.raffle.create({
     data: {
       title,
       email,
