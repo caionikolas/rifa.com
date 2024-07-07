@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Rifa {
+  id             String  @id @default(uuid())
+  title          String
+  email          String
+  password       String
+  maximumNumbers Int     @map("maximum_numbers")
+  drawDate       String? @map("draw_date")
+  prizePool      String?
+  slug           String  @unique
+
+  @@map("rifas")
+}

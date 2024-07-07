@@ -1,0 +1,13 @@
+###
+POST http://localhost:3333/raffle
+Content-Type: application/json
+
+{
+  "title": "Rifa de Natal",
+  "email": "fulano@tal.com",
+  "password": "a123",
+  "maximumNumbers": 10,
+  "drawDate": "2024/04/20",
+  "prizePool": "uma caixa de bombom",
+  "slug": "rifa-natal"
+}
