@@ -8,14 +8,29 @@ datasource db {
 }
 
 model Raffle {
-  id             String  @id @default(uuid())
+  id             String   @id @default(uuid())
   title          String
   email          String
   password       String
-  maximumNumbers Int     @map("maximum_numbers")
-  drawDate       String? @map("draw_date")
+  maximumNumbers Int      @map("maximum_numbers")
+  drawDate       String?  @map("draw_date")
   prizePool      String?
-  slug           String  @unique
+  tickets        Ticket[]
 
   @@map("raffle")
+}
+
+model Ticket {
+  id        Int      @id @default(autoincrement())
+  number    Int
+  name      String
+  email     String?
+  celNumber String?
+  paid      Boolean?
+  raffleId  String   @map("raffle_id")
+
+  raffle Raffle @relation(fields: [raffleId], references: [id])
+
+  @@unique([raffleId, number])
+  @@map("ticket")
 }

@@ -1,12 +1,27 @@
 ###
-POST http://localhost:3333/raffle
+POST http://localhost:3333/raffles
 Content-Type: application/json
 
 {
-  "title": "Rifa de Natal3",
-  "email": "fulano@tal.com",
-  "password": "a123",
-  "maximumNumbers": 10,
-  "drawDate": "2024/04/20",
-  "prizePool": "uma caixa de bombom"
+  "title": "Rifa de Carnaval",
+  "email": "diana@tal.com",
+  "password": "123",
+  "maximumNumbers": 100,
+  "drawDate": "2024/08/14",
+  "prizePool": "Um Kit Homem sagaz"
 }
+
+###
+POST http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets
+Content-Type: application/json
+
+{
+  "number": 100,
+  "name": "Tacy",
+  "email": "patriota@gmail.com",
+  "celNumber": "86999887766",
+  "paid": true
+}
+
+###
+GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05
