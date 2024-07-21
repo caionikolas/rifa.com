@@ -27,3 +27,6 @@ GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05
 
 ###
 GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets/7
+
+###
+GET http://localhost:3333/raffles

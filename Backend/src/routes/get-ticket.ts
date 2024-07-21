@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import z from "zod";
+import { z } from "zod";
 import { prisma } from "../lib/prisma";
 
 export async function getTicket(app: FastifyInstance) {
@@ -51,7 +51,6 @@ export async function getTicket(app: FastifyInstance) {
         throw new Error('Ticket não existe.')
       }
 
-      console.log(ticket)
       return reply.send({ 
         number: ticket.number,
         name: ticket.name,

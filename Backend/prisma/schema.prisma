@@ -29,7 +29,7 @@ model Ticket {
   paid      Boolean?
   raffleId  String   @map("raffle_id")
 
-  raffle Raffle @relation(fields: [raffleId], references: [id])
+  raffle Raffle @relation(fields: [raffleId], references: [id], onDelete: Cascade)
 
   @@unique([raffleId, number])
   @@map("ticket")
