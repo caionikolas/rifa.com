@@ -14,7 +14,7 @@ model Raffle {
   password       String
   maximumNumbers Int      @map("maximum_numbers")
   drawDate       String?  @map("draw_date")
-  prizePool      String?
+  prizePool      String?  @map("prize_pool")
   tickets        Ticket[]
 
   @@map("raffle")
@@ -25,7 +25,7 @@ model Ticket {
   number    Int
   name      String
   email     String?
-  celNumber String?
+  celNumber String?  @map("cel_number")
   paid      Boolean?
   raffleId  String   @map("raffle_id")
 

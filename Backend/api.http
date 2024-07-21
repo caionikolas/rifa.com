@@ -16,12 +16,14 @@ POST http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets
 Content-Type: application/json
 
 {
-  "number": 100,
-  "name": "Tacy",
-  "email": "patriota@gmail.com",
-  "celNumber": "86999887766",
-  "paid": true
+  "number": 7,
+  "name": "Nikolas",
+  "email": "Nik@gmail.com",
+  "celNumber": "86999887766"
 }
 
 ###
 GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05
+
+###
+GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets/7
