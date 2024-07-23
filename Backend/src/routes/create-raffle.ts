@@ -8,6 +8,8 @@ export async function createRaffle(app: FastifyInstance) {
     .withTypeProvider<ZodTypeProvider>()
     .post('/raffles', {
     schema: {
+      summary: 'Cadastrar uma rifa',
+      tags: ['Raffles'],
       body: z.object({
         title: z.string().min(4),
         email: z.string().email(),

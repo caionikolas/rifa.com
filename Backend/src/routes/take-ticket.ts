@@ -2,14 +2,17 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
+import { BadRequest } from "./_errors/bad-request";
 
 export async function takeTicket(app:FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .post('/raffles/:raffleId/tickets', {
       schema: {
+        summary: 'Cadastrar um Bilhete',
+        tags: ['Tickets'],
         body: z.object({
-          number: z.number().int(),
+          number: z.number().int().min(1),
           name: z.string().min(4),
           email: z.string().email().nullish(),
           celNumber: z.string().nullish(),
@@ -45,11 +48,13 @@ export async function takeTicket(app:FastifyInstance) {
       ]) 
 
       if (ticketFromNumber !== null) {
-        throw new Error('O número já está cadastrado na rifa!')
+        throw new BadRequest('O número já está cadastrado na rifa!')
       }
 
+      
+
       if (raffle?.maximumNumbers && number > raffle.maximumNumbers) {
-          throw new Error('O número do bilhete escolhido não é valido!')
+          throw new BadRequest('O número do bilhete escolhido não é valido!')
       }
 
       const ticket = await prisma.ticket.create({

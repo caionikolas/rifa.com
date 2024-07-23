@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
+import { BadRequest } from "./_errors/bad-request";
 
 const infoTickets = z.object({
   number: z.number(),
@@ -16,6 +17,8 @@ export async function getRaffle (app: FastifyInstance) {
     .withTypeProvider<ZodTypeProvider>()
     .get('/raffles/:raffleId', {
       schema: {
+        summary: 'Obter uma rifa',
+        tags: ['Raffles'],
         params: z.object({
           raffleId: z.string().uuid(),
         }),
@@ -60,7 +63,7 @@ export async function getRaffle (app: FastifyInstance) {
       })
 
       if (raffle === null) {
-        throw new Error('Rifa não encontrada.')
+        throw new BadRequest('Rifa não encontrada.')
       }
 
       return reply.send({

@@ -2,12 +2,15 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
+import { BadRequest } from "./_errors/bad-request";
 
 export async function getTicket(app: FastifyInstance) {
   app
     .withTypeProvider<ZodTypeProvider>()
     .get('/raffles/:raffleId/tickets/:ticketNumber', {
       schema: {
+        summary: 'Obter um Bilhete',
+        tags: ['Tickets'],
         params: z.object({
           raffleId: z.string().uuid(),
           ticketNumber: z.coerce.number().int(),
@@ -48,7 +51,7 @@ export async function getTicket(app: FastifyInstance) {
       })
 
       if (ticket === null) {
-        throw new Error('Ticket não existe.')
+        throw new BadRequest('Ticket não existe.')
       }
 
       return reply.send({ 

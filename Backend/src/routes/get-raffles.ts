@@ -8,6 +8,8 @@ export async function getRaffles(app: FastifyInstance){
     .withTypeProvider<ZodTypeProvider>()
     .get('/raffles', {
       schema: {
+        summary: 'Obter todas as rifas',
+        tags: ['Raffles'],
         querystring: z.object({
           query: z.string().nullish(),
           pageIndex: z.string().nullish().default('0').transform(Number),
