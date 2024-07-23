@@ -7,7 +7,6 @@ WORKDIR /app
 ENV PORT 3000
 
 COPY ["package.json", "package-lock.json", "./"]
-COPY .env ./.env
 COPY prisma ./prisma/
 
 RUN npm install --production --silent && mv node_modules ../
