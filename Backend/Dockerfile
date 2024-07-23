@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:16.13-alpine as builder
 
 WORKDIR /app
 
@@ -12,4 +12,4 @@ COPY . /app
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.mjs", ]
+CMD ["npm", "start" ]
