@@ -1,15 +1,24 @@
-FROM node:16.13
+FROM node:lts
+RUN apt-get update
+RUN apt-get install -y openssl
 
 WORKDIR /app
 
-ENV NODE_ENV development
+ENV PORT 3000
 
-COPY package.json /app
+COPY ["package.json", "package-lock.json", "./"]
+COPY .env ./.env
+COPY prisma ./prisma/
 
-RUN npm install
+RUN npm install --production --silent && mv node_modules ../
 
-COPY . /app
+RUN npm i -g prisma
+
+COPY . .
+
+RUN npx prisma generate --schema ./prisma/schema.prisma
+RUN npm run build
 
 EXPOSE 3000
 
-CMD ["node", "dist/server.mjs", "prisma generate" ]
+CMD ["npm", "start"]
