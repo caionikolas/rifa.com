@@ -12,4 +12,4 @@ COPY . /app
 
 EXPOSE 3000
 
-CMD "node dist/server.mjs --reload-dir=src"
+CMD ["node dist/server.mjs, node src/server.ts"]
