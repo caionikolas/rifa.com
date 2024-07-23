@@ -16,7 +16,6 @@ RUN npm i -g prisma
 COPY . .
 
 RUN npx prisma generate --schema ./prisma/schema.prisma
-RUN npm run build
 
 EXPOSE 3000
 
