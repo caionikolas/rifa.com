@@ -3,7 +3,7 @@ POST http://localhost:3333/raffles
 Content-Type: application/json
 
 {
-  "title": "Rifa de Carnaval",
+  "title": "Rifa de Dia dos pais",
   "email": "diana@tal.com",
   "password": "123",
   "maximumNumbers": 100,
@@ -12,21 +12,21 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets
+POST http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234/tickets
 Content-Type: application/json
 
 {
-  "number": 0,
+  "number": 7,
   "name": "Nikolas",
   "email": "Nik@gmail.com",
   "celNumber": "86999887766"
 }
 
 ###
-GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05
+GET http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234
 
 ###
-GET http://localhost:3333/raffles/2c87eccc-405a-4cdd-a365-a48557b2bb05/tickets/7
+GET http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234/tickets/7
 
 ###
 GET http://localhost:3333/raffles
