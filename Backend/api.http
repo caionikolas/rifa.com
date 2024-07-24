@@ -1,32 +1,44 @@
 ###
 POST http://localhost:3333/raffles
 Content-Type: application/json
-
 {
-  "title": "Rifa de Reveion",
+  "title": "Rifa de dia dos pais",
   "email": "diana@tal.com",
   "password": "123",
   "maximumNumbers": 100,
   "drawDate": "2024/08/14",
   "prizePool": "Um Kit Homem sagaz"
 }
-
 ###
-POST http://localhost:3333/raffles/32c0e9a7-be84-4181-a83d-b870cd5a2e04/tickets
+POST http://localhost:3333/raffles/f3e2a2ac-4ead-4fab-be66-4e5382e9ac74/tickets
 Content-Type: application/json
-
 {
   "number": 7,
   "name": "Nikolas",
   "email": "Nik@gmail.com",
   "celNumber": "86999887766"
 }
-
 ###
 GET http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234
-
 ###
-GET http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234/tickets/7
-
+GET http://localhost:3333/raffles/f3e2a2ac-4ead-4fab-be66-4e5382e9ac74/tickets/7
 ###
 GET http://localhost:3333/raffles
+###
+GET http://localhost:3333/raffles/f3e2a2ac-4ead-4fab-be66-4e5382e9ac74/tickets/7
+###
+DELETE http://localhost:3333/raffles/52327f2c-3ac4-4cb9-9ef3-5f244130d3d4
+###
+DELETE http://localhost:3333/raffles/f3e2a2ac-4ead-4fab-be66-4e5382e9ac74/tickets/7
+###
+PUT http://localhost:3333/raffles/a2ab747d-219d-48cb-9333-842bff07cd79
+Content-Type: application/json
+
+{
+  "title": "Rifa de Natal",
+  "email": "diana@tal.com",
+  "password": "123",
+  "maximumNumbers": 50,
+  "drawDate": "2024/08/14",
+  "prizePool": "Um Kit Homem sagaz"
+}

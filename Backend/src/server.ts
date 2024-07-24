@@ -10,6 +10,9 @@ import { getTicket } from "./routes/get-ticket";
 import { getRaffles } from "./routes/get-raffles";
 import { errorHandler } from "./error-handler";
 import { fastifyCors } from "@fastify/cors";
+import { delRaffle } from "./routes/delete-raffle";
+import { delTicket } from "./routes/delete-ticket";
+import { putRaffle } from "./routes/update-raffle";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -42,6 +45,9 @@ app.register(takeTicket);
 app.register(getRaffle);
 app.register(getTicket);
 app.register(getRaffles);
+app.register(delRaffle);
+app.register(delTicket);
+app.register(putRaffle);
 
 app.setErrorHandler(errorHandler)
 
