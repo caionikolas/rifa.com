@@ -1,3 +1,2 @@
 # .dockerignore
 node_módulos
-!nodes_modules/.prisma
