@@ -9,11 +9,11 @@ import { getRaffle } from "./routes/get-raffle";
 import { getTicket } from "./routes/get-ticket";
 import { getRaffles } from "./routes/get-raffles";
 import { errorHandler } from "./error-handler";
-import fastifyCors from "@fastify/cors";
+import cors from "@fastify/cors";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>()
 
-app.register(fastifyCors, {
+app.register(cors, {
   origin: '*',
 })
 
