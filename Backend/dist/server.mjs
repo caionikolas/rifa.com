@@ -24,9 +24,9 @@ import fastify from "fastify";
 import { fastifySwagger } from "@fastify/swagger";
 import { fastifySwaggerUi } from "@fastify/swagger-ui";
 import { serializerCompiler, validatorCompiler, jsonSchemaTransform } from "fastify-type-provider-zod";
-import fastifyCors from "@fastify/cors";
+import cors from "@fastify/cors";
 var app = fastify().withTypeProvider();
-app.register(fastifyCors, {
+app.register(cors, {
   origin: "*"
 });
 app.register(fastifySwagger, {
@@ -52,7 +52,10 @@ app.register(getRaffle);
 app.register(getTicket);
 app.register(getRaffles);
 app.setErrorHandler(errorHandler);
-app.listen({ port: 3333, host: "0.0.0.0" }).then(() => console.log("running"));
+app.listen({
+  port: process.env.PORT ? Number(process.env.PORT) : 3333,
+  host: "0.0.0.0"
+}).then(() => console.log("running"));
 export {
   app
 };

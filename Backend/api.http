@@ -3,7 +3,7 @@ POST http://localhost:3333/raffles
 Content-Type: application/json
 
 {
-  "title": "Rifa de Dia dos pais",
+  "title": "Rifa de Reveion",
   "email": "diana@tal.com",
   "password": "123",
   "maximumNumbers": 100,
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3333/raffles/f1bede08-692d-41a0-9075-8b94e5437234/tickets
+POST http://localhost:3333/raffles/32c0e9a7-be84-4181-a83d-b870cd5a2e04/tickets
 Content-Type: application/json
 
 {
