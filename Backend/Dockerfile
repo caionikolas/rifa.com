@@ -4,7 +4,7 @@ RUN apt-get install -y openssl
 
 WORKDIR /app
 
-ENV PORT 3000
+ENV PORT 3333
 
 COPY ["package.json", "package-lock.json", "./"]
 COPY prisma ./prisma/
@@ -17,6 +17,6 @@ COPY . .
 
 RUN npx prisma generate --schema ./prisma/schema.prisma
 
-EXPOSE 3000
+EXPOSE 3333
 
 CMD ["npm", "start"]
